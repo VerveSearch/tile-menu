@@ -18,7 +18,7 @@ function onError(err){
 gulp.task('jshint',function(){
 	return gulp.src(PATHS.JS.SRC)
 		.pipe(jshint())
-		.pipe(jshint.reporters(stylish)); 
+		.pipe(jshint.reporter(stylish)); 
 });
 
 gulp.task('concat',['jshint'],function(){
@@ -38,6 +38,4 @@ gulp.task('watch',['concat'],function(){
 	return gulp.watch(PATHS.JS.SRC,['concat']); 
 });
 
-gulp.task('default','watch',function(){
-
-});
+gulp.task('default',['watch']);

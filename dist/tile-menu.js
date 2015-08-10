@@ -40,6 +40,7 @@
 				e.stopPropagation();
 			});
 			this.trigger.on('click', $.proxy(this.onTriggerClick, this)); 
+			var overlay = this.onOutsideClick && this.overlayEl.on('click', $.proxy(this.hide, this);
 			if(this.onOutsideClick){ 
 				this.overlayEl.on('click', $.proxy(this.hide, this));
 			}
@@ -62,12 +63,17 @@
 			this.el.toggleClass('active');
 		},
 		onItemClick: function(index){  
-			if (this.buttons[index].onClick){  
-				this.buttons[index].onClick(this.el, this.parentEl);
+			var m = this.buttons[index].onClick;
+			if(m){
+				m(this.el, this.parentEl);
 			}
-			if (this.closeOnClick){
-				this.hide();
-			}
+			// if (this.buttons[index].onClick){  
+			// 	this.buttons[index].onClick(this.el, this.parentEl);
+			// }
+			var n = (this.closeOnClick) && this.hide();
+			// if (this.closeOnClick){
+			// 	this.hide();
+			// }
 		}
 	};
 
